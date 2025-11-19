@@ -36,6 +36,14 @@ ram.runtime = "50M"
     type = "path"
     default = "/glpi"
 
+    [install.language]
+    ask.en = "Choose the application language"
+    ask.fr = "Choisissez la langue de l'application"
+    ask.pt_BR = "Escolha o idioma do aplicativo"
+    type = "select"
+    choices = ["ar_IQ", "ar_SA", "ar_SY", "az_AZ", "be_BY", "bg_BG", "bn_BD", "ca_ES", "cs_CZ", "da_DK", "de_DE", "el_GR", "en_GB", "en_US", "eo"   , "es_419", "es_AR", "es_CL", "es_CO", "es_EC", "es_ES", "es_MX", "es_VE", "et_EE", "eu_ES", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "gl_ES", "he_IL", "hi_IN", "hr_HR", "hu_HU", "id_ID", "is_IS", "it_IT", "ja_JP", "kn"   , "ko_KR", "lt_LT", "lv_LV", "mn_MN", "ms_MY", "nb_NO", "nl_BE", "nl_NL", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sk_SK", "sl_SI", "sq_AL", "sr_RS", "sv_SE", "th_TH", "tr_TR", "uk_UA", "vi_VN", "zh_CN", "zh_HK", "zh_TW"]
+    default = "en_GB"
+
     [install.init_main_permission]
     type = "group"
     default = "visitors"
