@@ -29,7 +29,7 @@ chown -R $app:www-data "$install_dir"
 ynh_script_progression --message="Configuring Fail2Ban..."
 
 # Create a dedicated Fail2Ban config
-ynh_config_add_fail2ban --logpath="$install_dir/files/_logs/events.log" --failregex="^[login] 3: Failed login for .* from IP <HOST>$"
+ynh_config_add_fail2ban --logpath="$install_dir/files/_log/events.log" --failregex="^[login] 3: Failed login for .* from IP <HOST>$"
 
 #=================================================
 # SYSTEM CONFIGURATION
