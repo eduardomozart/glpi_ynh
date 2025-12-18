@@ -27,10 +27,8 @@ chown -R $app:www-data "$install_dir"
 ynh_script_progression --message="Configuring Fail2Ban..."
 
 # Create a dedicated Fail2Ban config
-ynh_config_add_fail2ban --logpath="$install_dir/files/_log/event.log" --failregex="^\[login\] \d+: Failed login for .* from IP <HOST>$"
-ynh_replace --match="\[Definition\]" --replace="\[Definition\]\ndatepattern = ^%%Y-%%m-%%d %%H:%%M:%%S" --file="/etc/fail2ban/filter.d/$app.conf"
-ynh_replace --match="^logpath = .*" --replace="& \nmaxlines = 2" --file="/etc/fail2ban/jail.d/$app.conf"
-ynh_systemctl --action=restart --service=fail2ban
+ynh_config_add_fail2ban --logpath="$install_dir/files/_log/event.log" --failregex="^.*?(Failed login for)[\S\s]+(from IP) <HOST>.*$"
+ynh_config_add_fail2ban --logpath="/var/log/nginx/$domain-access.log" --failregex="^(<HOST>[\d|\.?]{1,3}).+apirest.php.+"\s40\d\s\d{1,5}"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
