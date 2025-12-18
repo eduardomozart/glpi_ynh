@@ -30,6 +30,9 @@ ynh_script_progression --message="Configuring Fail2Ban..."
 
 # Create a dedicated Fail2Ban config
 ynh_config_add_fail2ban --logpath="$install_dir/files/_log/event.log" --failregex="^\[login\] \d+: Failed login for .* from IP <HOST>$"
+ynh_replace --match="\[Definition\]" --replace="\[Definition\]\ndatepattern = ^%%Y-%%m-%%d %%H:%%M:%%S" --file="/etc/fail2ban/filter.d/$app.conf"
+ynh_replace --match="filter = $app" --replace="filter = $app\nmaxlines = 2" --file="/etc/fail2ban/jail.d/$app.conf"
+ynh_systemctl --action=restart --service=fail2ban
 
 #=================================================
 # SYSTEM CONFIGURATION
