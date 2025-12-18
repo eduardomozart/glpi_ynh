@@ -45,7 +45,7 @@ ynh_restore "/etc/fail2ban/jail.d/$app.conf"
 ynh_restore "/etc/fail2ban/filter.d/$app.conf"
 
 # Make sure a log file exists (mostly for CI tests)
-logfile="$install_dir/files/_log/events.log"
+logfile="$install_dir/files/_log/event.log"
 if [ ! -f "$logfile" ]; then
 	touch "$logfile"
 	chown "$app:" "$logfile"
