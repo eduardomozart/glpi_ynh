@@ -27,7 +27,7 @@ chown -R $app:www-data "$install_dir"
 ynh_script_progression --message="Configuring Fail2Ban..."
 
 # Create a dedicated Fail2Ban config
-ynh_add_fail2ban_config --logpath="$install_dir/files/_logs/events.log" --failregex="^.*Failed login for <F-USER> from IP <HOST>.*$" --max_retry="5"
+ynh_config_add_fail2ban --logpath="$install_dir/files/_logs/events.log" --failregex="^.*Failed login for <F-USER> from IP <HOST>.*$" --max_retry="5"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
