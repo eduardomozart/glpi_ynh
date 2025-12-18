@@ -28,6 +28,8 @@ ynh_script_progression --message="Configuring Fail2Ban..."
 
 # Create a dedicated Fail2Ban config
 ynh_config_add_fail2ban --logpath="/var/log/nginx/$domain-access.log" --failregex="^(<HOST>[\d|\.?]{1,3}).+(apirest\.php|login\.php).+\"\s40\d\s\d{1,5}"
+ynh_replace --match="\[Definition\]" --replace="\[Definition\]\ndatepattern = {^LN-BEG}%%ExY(?P<_sep>[-/.])%%m(?P=_sep)%%d[T ]%%H:%%M:%%S(?:[.,]%%f)?(?:\s*%%z)?\n              ^[^\[]*\[({DATE})\n              {^LN-BEG}" --file="/etc/fail2ban/filter.d/glpi__2.conf"
+ynh_systemctl --action=restart --service=fail2ban
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
